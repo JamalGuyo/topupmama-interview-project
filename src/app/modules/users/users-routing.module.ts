@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// components
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersCreateComponent } from './containers/users-create/users-create.component';
 import { UsersListComponent } from './containers/users-list/users-list.component';
-
-// components
 
 const routes: Routes = [
   {

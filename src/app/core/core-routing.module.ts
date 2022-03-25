@@ -5,13 +5,13 @@ const routes: Routes = [
   {
     path: 'users',
     loadChildren: () =>
-      import('../modules/users/users.module').then((m) => m.UsersModule),
+      import('@modules/users/users.module').then((m) => m.UsersModule),
   },
 
   {
     path: 'myaccount',
     loadChildren: () =>
-      import('../modules/account/account.module').then((m) => m.AccountModule),
+      import('@modules/account/account.module').then((m) => m.AccountModule),
   },
   {
     path: '',
