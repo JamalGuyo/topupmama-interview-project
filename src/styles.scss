@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
+// buttons
+button {
+  background-color: #f7797d !important;
+  border-color: none !important;
+  color: white !important;
+}
+
+// links
+a {
+  text-decoration: none !important;
+  color: #f7797d !important;
+}
+
+// AUTH - STYLES
+.auth-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+
+  .content-div {
+    align-self: center;
+    backdrop-filter: blur(5px);
+  }
+  .big-div {
+    background: #c6ffdd; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #f7797d,
+      #fbd786,
+      #c6ffdd
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #f7797d,
+      #fbd786,
+      #c6ffdd
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .auth-wrapper {
+    background: #c6ffdd; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #f7797d,
+      #fbd786,
+      #c6ffdd
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #f7797d,
+      #fbd786,
+      #c6ffdd
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .big-div {
+      display: none;
+    }
+
+    .content-div {
+      width: 100%;
+      backdrop-filter: blur(5px);
+      .card {
+        background: rgba(255, 255, 255, 0.7) !important;
+      }
+    }
+  }
+}
