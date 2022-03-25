@@ -14,6 +14,7 @@ const routes: Routes = [
   {
     path: 'core',
     component: MainLayoutComponent,
+    loadChildren: () => import('../core/core.module').then((m) => m.CoreModule),
   },
   {
     path: '',
