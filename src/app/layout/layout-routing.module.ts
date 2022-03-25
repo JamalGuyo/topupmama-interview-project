@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
+    loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'core',
