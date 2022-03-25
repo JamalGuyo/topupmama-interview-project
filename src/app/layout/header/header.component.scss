@@ -1,0 +1,30 @@
+$orange: #f7797d;
+$light-orange: #fbd786;
+$aqua: #c6ffdd;
+
+nav {
+  background: $light-orange !important;
+  .navbar-brand {
+    color: rgba(0, 0, 0, 0.9) !important;
+  }
+  a {
+    margin-inline: 1rem;
+    color: rgba(0, 0, 0, 0.6) !important;
+    text-decoration: none;
+    cursor: pointer !important;
+    &.active {
+      color: rgba(0, 0, 0, 0.9) !important;
+      border-bottom: 1px solid black;
+    }
+    &:hover {
+      color: rgba(0, 0, 0, 0.9) !important;
+    }
+  }
+  .location {
+    align-self: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: $orange;
+  }
+}

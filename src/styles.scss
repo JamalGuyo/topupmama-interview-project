@@ -1,8 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+// colors
+
+$orange: #f7797d;
+$light-orange: #fbd786;
+$aqua: #c6ffdd;
 
 // buttons
 button {
-  background-color: #f7797d !important;
+  background-color: $orange !important;
   border-color: none !important;
   color: white !important;
 }
@@ -10,7 +15,7 @@ button {
 // links
 a {
   text-decoration: none !important;
-  color: #f7797d !important;
+  color: $orange !important;
 }
 
 // AUTH - STYLES
@@ -19,25 +24,28 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: beige;
+  background-color: $orange;
 
   .content-div {
     align-self: center;
     backdrop-filter: blur(5px);
+    .card {
+      background: rgba(255, 255, 255, 0.999) !important;
+    }
   }
   .big-div {
-    background: #c6ffdd; /* fallback for old browsers */
+    background: $aqua; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to right,
-      #f7797d,
-      #fbd786,
-      #c6ffdd
+      $orange,
+      $light-orange,
+      $aqua
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
       to right,
-      #f7797d,
-      #fbd786,
-      #c6ffdd
+      $orange,
+      $light-orange,
+      $aqua
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     height: 100vh;
@@ -49,15 +57,15 @@ a {
     background: #c6ffdd; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to right,
-      #f7797d,
-      #fbd786,
-      #c6ffdd
+      $orange,
+      $light-orange,
+      $aqua
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
       to right,
-      #f7797d,
-      #fbd786,
-      #c6ffdd
+      $orange,
+      $light-orange,
+      $aqua
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     .big-div {
       display: none;
@@ -66,9 +74,6 @@ a {
     .content-div {
       width: 100%;
       backdrop-filter: blur(5px);
-      .card {
-        background: rgba(255, 255, 255, 0.7) !important;
-      }
     }
   }
 }
