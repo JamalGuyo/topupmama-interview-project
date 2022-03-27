@@ -1,0 +1,18 @@
+$orange: #f7797d;
+$light-orange: #fbd786;
+$aqua: #c6ffdd;
+
+.title {
+  font-weight: bolder !important;
+}
+.row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+.card-footer {
+  a {
+    margin-inline-end: 0.2rem;
+    background: $orange !important;
+    color: white !important;
+  }
+}
