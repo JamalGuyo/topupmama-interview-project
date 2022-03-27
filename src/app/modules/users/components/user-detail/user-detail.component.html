@@ -1,1 +1,24 @@
-<p>user-detail works!</p>
+<div class="mt-5 card">
+  <div class="card-header">
+    <h1>John Doe</h1>
+  </div>
+
+  <div class="card-body">
+    <div class="row" *ngIf="user">
+      <div class="col title">Name</div>
+      <div class="col">{{ user.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col title">Job Title</div>
+      <div class="col">{{ user.title }}</div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <a class="btn btn-outline" [routerLink]="['/core/users']">
+      <i class="fa-solid fa-angle-left"></i> back</a
+    >
+    <a class="btn btn-outline" [routerLink]="['/core/users/1/edit']">Edit</a>
+    <a class="btn">Delete</a>
+  </div>
+</div>
