@@ -24,7 +24,16 @@ a {
   backdrop-filter: blur(5px);
   background: rgba(255, 255, 255, 0) !important;
 }
+// form error text
+.invalid-text {
+  margin-top: 0.1rem;
+  color: red !important;
+}
 
+// form prepend and append icons height
+.input-group-text {
+  height: 100% !important;
+}
 // AUTH - STYLES
 .auth-wrapper {
   height: 100vh;
