@@ -18,6 +18,13 @@ a {
   color: $orange !important;
 }
 
+// cards
+.card {
+  align-self: center;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0) !important;
+}
+
 // AUTH - STYLES
 .auth-wrapper {
   height: 100vh;

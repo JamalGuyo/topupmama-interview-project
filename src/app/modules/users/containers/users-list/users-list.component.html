@@ -1,1 +1,37 @@
-<p>users-list works!</p>
+<div class="mt-5 card">
+  <div class="card-header">
+    <h1>Users</h1>
+    <a routerLink="/core/users/new" class="mt-2 btn create-user">new user</a>
+  </div>
+  <div class="card-body">
+    <div class="row header">
+      <div class="col">Id</div>
+      <div class="col">Name</div>
+      <div class="col">JobTitle</div>
+      <div class="col">actions</div>
+    </div>
+    <div class="row" *ngFor="let user of users; let i = index">
+      <div class="col">{{ i + 1 }}</div>
+      <div class="col">{{ user.name }}</div>
+      <div class="col">{{ user.title }}</div>
+      <div class="col">
+        <a class="btn btn-outline" [routerLink]="['/core/users', i]">Details</a>
+        <a class="btn btn-outline" [routerLink]="['/core/users', i, 'edit']"
+          >Edit</a
+        >
+        <a class="btn btn-outline">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

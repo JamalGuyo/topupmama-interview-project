@@ -1,0 +1,27 @@
+$orange: #f7797d;
+$light-orange: #fbd786;
+$aqua: #c6ffdd;
+
+a.create-user {
+  background-color: $orange;
+  color: white !important;
+}
+.header {
+  font-weight: bolder !important;
+  text-transform: uppercase;
+}
+.row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  font-weight: 400;
+  .col {
+    display: flex;
+    align-items: center !important;
+  }
+  a {
+    transition: 0.5s;
+    &:hover {
+      border-bottom: 1px solid $orange;
+    }
+  }
+}
