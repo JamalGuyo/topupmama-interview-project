@@ -7,26 +7,87 @@
         </div>
         <div class="card">
           <div class="card-body">
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
               <div class="mb-3">
                 <label for="emailInput" class="form-label">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="emailInput"
-                  placeholder="name@example.com"
-                />
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailInput"
+                    placeholder="name@example.com"
+                    formControlName="email"
+                  />
+                </div>
+                <div
+                  class="invalid-text"
+                  *ngIf="
+                    loginForm.get('email')?.touched &&
+                    loginForm.get('email')?.invalid
+                  "
+                >
+                  <p *ngIf="loginForm.get('email').errors['required']">
+                    Email is required!
+                  </p>
+                  <p *ngIf="loginForm.get('email').errors['email']">
+                    Email is not valid!
+                  </p>
+                </div>
               </div>
+
               <div class="mb-3">
                 <label for="passwordInput" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="passwordInput"
-                />
+                <div class="input-group">
+                  <input
+                    [type]="fieldTextType ? 'text' : 'password'"
+                    class="form-control"
+                    id="passwordInput"
+                    formControlName="password"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i
+                        class="fa fa-eye-slash"
+                        [ngClass]="{
+                          'fa-eye-slash': !fieldTextType,
+                          'fa-eye': fieldTextType
+                        }"
+                        (click)="toggleFieldTextType()"
+                      >
+                      </i>
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="invalid-text"
+                  *ngIf="
+                    loginForm.get('password').touched &&
+                    loginForm.get('password').invalid
+                  "
+                >
+                  <p *ngIf="loginForm.get('password').errors['required']">
+                    password is required!
+                  </p>
+                  <div *ngIf="loginForm.get('password').errors['pattern']">
+                    Password must be atleast 8 characters, have alphanumeric and
+                    special character
+                  </div>
+                </div>
               </div>
+
               <div class="mb-3">
-                <button type="button" class="mr-10 btn">Login</button>
+                <button
+                  type="submit"
+                  class="mr-10 btn"
+                  [disabled]="!loginForm.valid"
+                >
+                  Login
+                </button>
               </div>
               <p>
                 Don't have an account?
