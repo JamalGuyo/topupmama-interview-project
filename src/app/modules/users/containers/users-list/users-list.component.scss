@@ -9,11 +9,15 @@ a.create-user {
 .header {
   font-weight: bolder !important;
   text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-bottom: none !important;
+  padding: 0.6rem 0 0 0 !important;
 }
-.row {
+.row:not(.header) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
   font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
   .col {
     display: flex;
     align-items: center !important;

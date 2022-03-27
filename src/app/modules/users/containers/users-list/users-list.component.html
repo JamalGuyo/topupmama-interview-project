@@ -1,15 +1,15 @@
 <div class="mt-5 card">
   <div class="card-header">
     <h1>Users</h1>
-    <a routerLink="/core/users/new" class="mt-2 btn create-user">new user</a>
-  </div>
-  <div class="card-body">
+    <a routerLink="/core/users/new" class="m-2 btn create-user">create user</a>
     <div class="row header">
       <div class="col">Id</div>
       <div class="col">Name</div>
       <div class="col">JobTitle</div>
       <div class="col">actions</div>
     </div>
+  </div>
+  <div class="card-body">
     <div class="row" *ngFor="let user of users; let i = index">
       <div class="col">{{ i + 1 }}</div>
       <div class="col">{{ user.name }}</div>
