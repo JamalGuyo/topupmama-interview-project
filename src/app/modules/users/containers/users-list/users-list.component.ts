@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UserService } from '@modules/users/services/users.service';
 import { ToastrService } from 'ngx-toastr';
 
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -20,10 +22,14 @@ export class UsersListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private store: Store<fromStore.UsersState>
   ) {}
 
   ngOnInit(): void {
+    // dispatch actions
+    this.store.dispatch(fromStore.loadUsers());
+
     this.userService.getUsers(1).subscribe({
       next: (data) => {
         this.userLoaded = true;

@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 
 import { UserService } from '../../services/users.service';
-import * as fromUserActions from '../actions/user.actions';
+import * as userActions from '../actions/user.actions';
 
 @Injectable()
 export class UsersEffects {
@@ -13,11 +13,13 @@ export class UsersEffects {
 
   loadUsers = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromUserActions.loadUsers),
+      ofType(userActions.loadUsers),
       mergeMap(() =>
         this.userService.getUsers().pipe(
-          map((res) => fromUserActions.loadUsersSuccess({ payload: res })),
-          catchError((error) => of(fromUserActions.loadUsersFail(error)))
+          map((res) => userActions.loadUsersSuccess({ payload: res })),
+          catchError((error) =>
+            of(userActions.loadUsersFail({ payload: error }))
+          )
         )
       )
     )
