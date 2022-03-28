@@ -48,31 +48,47 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $orange;
-
-  .content-div {
-    align-self: center;
-    backdrop-filter: blur(5px);
-    .card {
-      background: rgba(255, 255, 255, 0.999) !important;
+  background-color: #d0ffe2;
+  background: -webkit-linear-gradient(
+    to left,
+    $orange,
+    $light-orange,
+    $aqua
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    $orange,
+    $light-orange,
+    $aqua
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  .row {
+    justify-content: center !important;
+    .content-div {
+      justify-content: center;
+      align-self: center;
+      backdrop-filter: blur(5px);
+      .card {
+        background: rgba(255, 255, 255, 0.999) !important;
+      }
     }
-  }
-  .big-div {
-    background: $aqua; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      $orange,
-      $light-orange,
-      $aqua
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      $orange,
-      $light-orange,
-      $aqua
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    .big-div {
+      display: none;
+      background: $aqua; /* fallback for old browsers */
+      background: -webkit-linear-gradient(
+        to left,
+        $orange,
+        $light-orange,
+        $aqua
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(
+        to left,
+        $orange,
+        $light-orange,
+        $aqua
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    height: 100vh;
+      height: 100vh;
+    }
   }
 }
 
