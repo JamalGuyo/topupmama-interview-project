@@ -13,7 +13,7 @@
     <div class="row" *ngFor="let user of users; let i = index">
       <div class="col">{{ user.id }}</div>
       <div class="col">{{ user.first_name }}</div>
-      <div class="col">developer</div>
+      <div class="col">{{ user?.job || "No Job Defined" }}</div>
       <div class="col">
         <a class="btn btn-outline" [routerLink]="['/core/users', i]">Details</a>
         <a class="btn btn-outline" [routerLink]="['/core/users', i, 'edit']"
