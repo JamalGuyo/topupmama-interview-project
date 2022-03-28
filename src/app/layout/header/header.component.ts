@@ -10,8 +10,7 @@ import { LocationService } from '../service/location.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  lat: number;
-  lng: number;
+  address: string;
 
   constructor(
     private authService: AuthService,
@@ -20,35 +19,33 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getLocation();
+    // this.getLocation();
+    this.locationService.getIPAddress().subscribe((res: any) => {
+      this.address = `${res?.city}, ${res.countryCode}`;
+      console.log(res);
+    });
   }
 
   logout() {
     this.authService.logoutUser();
   }
 
-  getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          if (position) {
-            console.log(
-              'Latitude: ' +
-                position.coords.latitude +
-                'Longitude: ' +
-                position.coords.longitude
-            );
-            this.lat = position.coords.latitude;
-            this.lng = position.coords.longitude;
-            this.locationService
-              .getAddress(position.coords.latitude, position.coords.longitude)
-              .subscribe((res) => console.log(res));
-          }
-        },
-        (error) => console.log(error)
-      );
-    } else {
-      alert('Geolocation is not supported by this browser.');
-    }
-  }
+  // getLocation() {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         if (position) {
+  //           this.lat = position.coords.latitude;
+  //           this.lng = position.coords.longitude;
+  //           this.locationService
+  //             .getAddress(position.coords.latitude, position.coords.longitude)
+  //             .subscribe((res) => console.log(res));
+  //         }
+  //       },
+  //       (error) => console.log(error)
+  //     );
+  //   } else {
+  //     alert('Geolocation is not supported by this browser.');
+  //   }
+  // }
 }

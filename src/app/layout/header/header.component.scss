@@ -21,10 +21,8 @@ nav {
     }
   }
   .location {
-    align-self: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background-color: $orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

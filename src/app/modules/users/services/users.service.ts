@@ -20,11 +20,10 @@ export class UserService {
 
   // get all users
   getUsers(page: number = 1): Observable<UserRes> {
-    return this.http
-      .get<UserRes>(this.URL, {
-        params: { page },
-      })
-      .pipe(tap((res) => console.log(res)));
+    return this.http.get<UserRes>(this.URL, {
+      params: { page },
+    });
+    // .pipe(tap((res) => console.log(res)));
   }
 
   //   get a single user

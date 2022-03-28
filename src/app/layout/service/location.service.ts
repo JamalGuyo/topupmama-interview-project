@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -9,9 +9,20 @@ import { Observable } from 'rxjs';
 export class LocationService {
   constructor(private http: HttpClient) {}
 
-  getAddress(lat: any, lng: any): Observable<any> {
-    return this.http.get<any>(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyA_uAV9AEOEXsggWvB-AdykFqhqhqqlvaE`
-    );
+  // getAddress(ip: string): Observable<any> {
+  // return this.http.get<any>(
+  //   `https://geocode-api.arcgis.com/arcgis/rest/services/[myGeocodeServiceName]/GeocodeServer/reverseGeocode?f=json&featureTypes=&location=-117.205416,34.038074`,
+  //   {
+  //     params: {
+  //       f: 'json',
+  //       token:
+  //         'AAPK11b18097064f4838b4d68614e43e699dwtD-aY6V6qGGPI2mLGvY7qPGbktwa8UolAcV0BwyVAJqK1HpBNmZObP0sCLxKsn1',
+  //     },
+  //   }
+  // );
+  // }
+
+  getIPAddress() {
+    return this.http.get('http://ip-api.com/json/?fields=61439');
   }
 }
