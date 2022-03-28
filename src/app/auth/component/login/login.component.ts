@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ConfirmedValidator } from '@shared/utils/password-compare';
+import { ToastrService } from 'ngx-toastr';
+
+import { AuthService } from '@auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,12 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   fieldTextType: boolean;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.initLoginForm();
@@ -34,8 +42,18 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     if (this.loginForm.invalid) return;
-    // TODO:
-    // send data to backend to register and navigate to main page
+
+    this.authService.loginUser(this.loginForm.value).subscribe({
+      next: (res) => {
+        localStorage.setItem('token', res?.token);
+        this.router.navigate(['/']);
+        this.toastr.success('', 'Logged in successfully!!');
+        this.loginForm.reset();
+      },
+      error: (error) => {
+        this.toastr.error('', error.error.error);
+      },
+    });
   }
 
   toggleFieldTextType() {
