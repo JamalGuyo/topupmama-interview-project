@@ -1,4 +1,4 @@
-<div class="mt-5 card" *ngIf="user">
+<div class="mt-5 card" *ngIf="user; else spinnercontent">
   <div class="card-header d-flex justify-content-between">
     <h1>{{ user.first_name }} {{ user.last_name }}</h1>
     <img [src]="user?.avatar" />
@@ -29,3 +29,6 @@
     <a class="btn">Delete</a>
   </div>
 </div>
+<ng-template #spinnercontent>
+  <app-spinner></app-spinner>
+</ng-template>

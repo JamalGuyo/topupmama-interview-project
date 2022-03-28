@@ -42,6 +42,12 @@ img {
 .input-group-text {
   height: 100% !important;
 }
+
+// cards
+.card-body {
+  min-height: 5rem !important;
+}
+
 // AUTH - STYLES
 .auth-wrapper {
   height: 100vh;

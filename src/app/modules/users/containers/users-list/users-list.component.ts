@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersListComponent implements OnInit {
   users: any[];
+  userLoaded: boolean = false;
 
   //
   totalPages: number;
@@ -25,6 +26,7 @@ export class UsersListComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUsers(1).subscribe({
       next: (data) => {
+        this.userLoaded = true;
         this.users = data.data;
         this.currentPage = data.page;
         this.totalPages = data.total_pages;
@@ -33,8 +35,10 @@ export class UsersListComponent implements OnInit {
   }
 
   loadUser(page: number) {
+    this.userLoaded = false;
     this.userService.getUsers(page).subscribe({
       next: (data) => {
+        this.userLoaded = true;
         this.users = data.data;
         this.currentPage = data.page;
         this.totalPages = data.total_pages;
