@@ -8,6 +8,10 @@ import { UserEditModule } from './components/user-edit/user-edit.module';
 import { UsersCreateModule } from './containers/users-create/users-create.module';
 import { UsersListModule } from './containers/users-list/users-list.module';
 
+// NGRX STORE
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -17,6 +21,7 @@ import { UsersListModule } from './containers/users-list/users-list.module';
     UserEditModule,
     UsersCreateModule,
     UsersListModule,
+    StoreModule.forFeature('users', reducers),
   ],
 })
 export class UsersModule {}
