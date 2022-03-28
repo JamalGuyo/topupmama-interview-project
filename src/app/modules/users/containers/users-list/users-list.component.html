@@ -23,7 +23,7 @@
           [routerLink]="['/core/users', user.id, 'edit']"
           >Edit</a
         >
-        <a class="btn btn-outline">Delete</a>
+        <a class="btn btn-outline" (click)="deleteUser(user.id)">Delete</a>
       </div>
     </div>
   </div>

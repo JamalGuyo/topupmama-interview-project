@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from '@modules/users/services/users.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users-list',
@@ -14,7 +16,11 @@ export class UsersListComponent implements OnInit {
   totalPages: number;
   currentPage: number;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.userService.getUsers(1).subscribe({
@@ -34,5 +40,16 @@ export class UsersListComponent implements OnInit {
         this.totalPages = data.total_pages;
       },
     });
+  }
+
+  deleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.router.navigate(['/core/users']);
+        this.toastr.success('User deleted successfully');
+      },
+      (error) => this.toastr.error(error.error.error)
+    );
   }
 }
