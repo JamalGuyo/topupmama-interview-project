@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
@@ -13,7 +14,7 @@ import * as fromStore from '../../store';
 })
 export class UsersListComponent implements OnInit {
   users: any[];
-  userLoaded: boolean = false;
+  userLoaded$: Observable<boolean> = of(false);
 
   //
   totalPages: number;
@@ -28,11 +29,13 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit(): void {
     // dispatch actions
-    this.store.dispatch(fromStore.loadUsers());
+    this.store.dispatch(fromStore.loadUsers({ payload: 1 }));
+    // select data load state
+    this.userLoaded$ = this.store.select(fromStore.getLoaded);
 
     this.userService.getUsers(1).subscribe({
       next: (data) => {
-        this.userLoaded = true;
+        this.userLoaded$ = this.store.select(fromStore.getLoaded);
         this.users = data.data;
         this.currentPage = data.page;
         this.totalPages = data.total_pages;
@@ -41,10 +44,11 @@ export class UsersListComponent implements OnInit {
   }
 
   loadUser(page: number) {
-    this.userLoaded = false;
+    this.store.dispatch(fromStore.loadUsers({ payload: page }));
+    this.userLoaded$ = this.store.select(fromStore.getLoaded);
     this.userService.getUsers(page).subscribe({
       next: (data) => {
-        this.userLoaded = true;
+        this.userLoaded$ = this.store.select(fromStore.getLoaded);
         this.users = data.data;
         this.currentPage = data.page;
         this.totalPages = data.total_pages;
