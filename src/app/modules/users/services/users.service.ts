@@ -36,4 +36,9 @@ export class UserService {
   createUser(data: { name: string; job: string }): Observable<any> {
     return this.http.post<any>(this.URL, data);
   }
+
+  // update user
+  updateUser(id: number, data: { name: string; job: string }): Observable<any> {
+    return this.http.put<any>(`${this.URL}/${id}`, data);
+  }
 }

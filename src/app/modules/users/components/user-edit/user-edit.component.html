@@ -1,12 +1,24 @@
 <div class="mt-5 card">
   <div class="card-header">
-    <h1>Edit User</h1>
+    <h1>Create User</h1>
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="editForm" (ngSubmit)="updateUser()">
       <div class="mb-3">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name" />
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Name"
+          formControlName="name"
+        />
+      </div>
+      <div
+        class="invalid-text"
+        *ngIf="editForm.get('name')?.touched && editForm.get('name')?.invalid"
+      >
+        <p *ngIf="editForm.get('name').errors['required']">Name is required!</p>
       </div>
       <div class="mb-3">
         <label for="job">Job Title</label>
@@ -15,10 +27,19 @@
           class="form-control"
           id="job"
           placeholder="Job Title"
+          formControlName="job"
         />
       </div>
+      <div
+        class="invalid-text"
+        *ngIf="editForm.get('job')?.touched && editForm.get('job')?.invalid"
+      >
+        <p *ngIf="editForm.get('job').errors['required']">Job is required!</p>
+      </div>
 
-      <button type="submit" class="btn">Update</button>
+      <button type="submit" class="btn" [disabled]="!editForm.valid">
+        Submit
+      </button>
     </form>
   </div>
 </div>
