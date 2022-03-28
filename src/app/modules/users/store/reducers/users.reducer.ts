@@ -30,11 +30,13 @@ export const reducer = createReducer<UsersState>(
     ...state,
     loaded: true,
     loading: false,
+    data: [...state.data, action.payload],
   })),
 
   on(fromActions.loadUsersFail, (state, action) => ({
     ...state,
     loaded: false,
     loading: false,
+    data: [],
   }))
 );
