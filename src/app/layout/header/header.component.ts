@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
     // this.getLocation();
     this.locationService.getIPAddress().subscribe((res: any) => {
       this.address = `${res?.city}, ${res.countryCode}`;
-      console.log(res);
     });
   }
 
