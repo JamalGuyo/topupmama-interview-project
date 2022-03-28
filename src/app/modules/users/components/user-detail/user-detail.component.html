@@ -1,16 +1,21 @@
-<div class="mt-5 card">
-  <div class="card-header">
-    <h1>John Doe</h1>
+<div class="mt-5 card" *ngIf="user">
+  <div class="card-header d-flex justify-content-between">
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+    <img [src]="user?.avatar" />
   </div>
 
   <div class="card-body">
-    <div class="row" *ngIf="user">
-      <div class="col title">Name</div>
-      <div class="col">{{ user.name }}</div>
+    <div class="row">
+      <div class="col title">First Name</div>
+      <div class="col">{{ user?.first_name }}</div>
     </div>
     <div class="row">
-      <div class="col title">Job Title</div>
-      <div class="col">{{ user.title }}</div>
+      <div class="col title">Last Name</div>
+      <div class="col">{{ user?.last_name }}</div>
+    </div>
+    <div class="row">
+      <div class="col title">Email</div>
+      <div class="col">{{ user?.email }}</div>
     </div>
   </div>
 
@@ -18,7 +23,9 @@
     <a class="btn btn-outline" [routerLink]="['/core/users']">
       <i class="fa-solid fa-angle-left"></i> back</a
     >
-    <a class="btn btn-outline" [routerLink]="['/core/users/1/edit']">Edit</a>
+    <a class="btn btn-outline" [routerLink]="['/core/users', user.id, 'edit']"
+      >Edit</a
+    >
     <a class="btn">Delete</a>
   </div>
 </div>

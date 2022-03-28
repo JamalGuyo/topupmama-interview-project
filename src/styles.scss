@@ -31,6 +31,13 @@ a {
   color: red !important;
 }
 
+// images
+img {
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 50% !important;
+}
+
 // form prepend and append icons height
 .input-group-text {
   height: 100% !important;

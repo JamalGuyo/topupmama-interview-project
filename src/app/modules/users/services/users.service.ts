@@ -28,8 +28,8 @@ export class UserService {
   }
 
   //   get a single user
-  getUser(userId: number): Observable<User> {
-    return this.http.get<User>(`${this.URL}/${userId}`);
+  getUser(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.URL}/${userId}`);
   }
 
   // create user

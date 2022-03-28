@@ -15,8 +15,12 @@
       <div class="col">{{ user.first_name }}</div>
       <div class="col">{{ user?.job || "No Job Defined" }}</div>
       <div class="col">
-        <a class="btn btn-outline" [routerLink]="['/core/users', i]">Details</a>
-        <a class="btn btn-outline" [routerLink]="['/core/users', i, 'edit']"
+        <a class="btn btn-outline" [routerLink]="['/core/users', user.id]"
+          >Details</a
+        >
+        <a
+          class="btn btn-outline"
+          [routerLink]="['/core/users', user.id, 'edit']"
           >Edit</a
         >
         <a class="btn btn-outline">Delete</a>
