@@ -135,7 +135,13 @@
               </div>
 
               <div class="mb-3">
-                <button type="submit" class="mr-10 btn">Register</button>
+                <button
+                  type="submit"
+                  class="mr-10 btn"
+                  [disabled]="!registerForm.valid"
+                >
+                  Register
+                </button>
               </div>
               <p>
                 Already have an account?
